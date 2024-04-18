@@ -1,0 +1,25 @@
+{
+  "name": "sba-318-express-app",
+  "version": "1.0.0",
+  "description": "SBA 318 Express Server Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PR2014FL/318-Express-Server-Application.git"
+  },
+  "author": "Josue Morales",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PR2014FL/318-Express-Server-Application/issues"
+  },
+  "homepage": "https://github.com/PR2014FL/318-Express-Server-Application#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  }
+}
