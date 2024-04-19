@@ -49,7 +49,7 @@ app.get("/info", (req, res) => {
   res.render("index", options);
 });
 
-app.route("/").get((req, res) => {
+app.route("/").get((req, res) => {//index route
   res.sendFile(__dirname + "/views/index.html");
 });
 
@@ -57,7 +57,7 @@ function logReq(req, res, next) {
   //Logging Middleware function needs to be down here for the response logging to occur as a synchronous action
   console.log(`Request initiated: ${req.method} ${req.url}`);
   next();
-  console.log(`Outgoing Response: ${res.statusCode} ${res.statusMessage}`);
+  console.log(`Outgoing Response: ${res.statusCode}`);
 }
 
 app.listen(port, () => {
