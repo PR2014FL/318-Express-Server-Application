@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>#title#</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style.josue" />
+    <style>
+    body {
+      background: #b9e8c9;
+      color: #232323;
+      line-height: 30px;
+      font-size: 20px;
+      font-family: sans-serif;
+      padding: 25px 50px;
+    }
+    code {
+      color: #09507c;
+      background: #deedf2;
+      padding: 2px 10px;
+      border-radius: 10px;
+    }    
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>#title#</h1>
+      <div>#content#</div>
+    </div>
+  </body>
+</html>
