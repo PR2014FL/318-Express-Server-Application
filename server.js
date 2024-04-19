@@ -16,7 +16,8 @@ app.use(logReq); //logging middleware for requests and responses info
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ extended: true }));
 
-app.engine("josue", (filePath, options, callback) => { // template engine
+app.engine("josue", (filePath, options, callback) => {
+  // template engine
   fs.readFile(filePath, (err, content) => {
     if (err) return callback(err);
 
@@ -35,8 +36,6 @@ app.use("/api/users", usersRouter);
 app.use("/api/ProfilePics", usersProfilesPicsRouter);
 app.use("/api/Comments", userComments);
 
-
-
 app.get("/info", (req, res) => {
   const options = {
     title: "Rendering Views",
@@ -53,10 +52,6 @@ app.get("/info", (req, res) => {
 app.route("/").get((req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
-
-
-
-
 
 function logReq(req, res, next) {
   //Logging Middleware function needs to be down here for the response logging to occur as a synchronous action
