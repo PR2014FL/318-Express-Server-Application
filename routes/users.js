@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 const users = require("../data/users");
 
-
 router
   .route("/")
   .get((req, res) => {
     res.send(users);
   })
- .post((req, res) => {
+  .post((req, res) => {
     if (req.body.name && req.body.age && req.body.street && req.body.city) {
       const user = {
         id: users[users.length - 1].id + 1,
@@ -16,8 +15,8 @@ router
         age: req.body.age,
         address: {
           street: req.body.street,
-          city: req.body.city,        
-        }
+          city: req.body.city,
+        },
       };
 
       users.push(user);
@@ -27,27 +26,38 @@ router
   });
 
 router
-.route("/:id")
-.get((req, res, next) => {
-  const user = users.find((u) => u.id == req.params.id);
-  if (user) res.json(user);
-  else next();
-})
-.patch((req, res, next) => {
-  const user = users.find((u, i) => {
-    if (u.id == req.params.id) {
-      for (const key in req.body) {
-        users[i][key] = req.body[key];
+  .route("/:id")
+  .get((req, res, next) => {
+    const user = users.find((u) => u.id == req.params.id);
+    if (user) res.json(user);
+    else next();
+  })
+  .patch((req, res, next) => {
+    const user = users.find((u, i) => {
+      if (u.id == req.params.id) {
+        for (const key in req.body) {
+          users[i][key] = req.body[key];
+        }
+        return true;
       }
-      return true;
-    } 
+    });
+    if (user) res.json(user);
+    else next();
+  })
+  .delete((req, res, next) => {
+    const user = users.find((u, i) => {
+      if (u.id == req.params.id) {
+        users.splice(i, 1);
+        return true;
+      }
+    });
+
+    if (user) res.json(user);
+    else next();
   });
-  if (user) res.json(user);
-  else next();
-});
 
-
-router.use((req, res) => {//Error handler middleware
+router.use((req, res) => {
+  //Error handler middleware
   res.status(404);
   res.json({ error: "Resourse Not Found" });
 });
