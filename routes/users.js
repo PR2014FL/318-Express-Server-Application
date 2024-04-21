@@ -58,7 +58,7 @@ router
 
 router.use((req, res) => {
   //Error handler middleware
-  res.status(404);
+  res.status(404); 
   res.json({ error: "Resourse Not Found" });
 });
 
